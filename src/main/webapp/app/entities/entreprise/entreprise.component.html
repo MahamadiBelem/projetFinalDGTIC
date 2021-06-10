@@ -1,0 +1,110 @@
+<h1 style="text-align: center; color: #007000; background:black; font-family: Verdana, Geneva, Tahoma, sans-serif;">Gestion des Entreprises</h1>
+<div style="background-color: #0070c0;color: white;">
+    <!--span class="span1">Arretes</span-->
+<br>
+
+</div>
+<br>
+
+<div style="background-color: #0070c0;color: white;">
+    <!--span class="span1">Arretes</span-->
+<br>
+
+</div>
+<br>
+<div>
+    <h2 id="page-heading">
+        
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-entreprise" [routerLink]="['/entreprise/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Nouveau
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="entreprises?.length === 0">
+        <span>No entreprises found</span>
+    </div>
+
+
+
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
+    </div>
+    <div class="table-responsive" id="entities" *ngIf="entreprises && entreprises.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <!--th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"  jhiSortBy="sigleEntreprise"><span>Sigle Entreprise</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nomEntreprise"><span>Entreprise</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numeroRCCM"><span> RCCM</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numeroIFU"><span>IFU</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="ville"><span>Ville</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="localisation"><span>Localisation</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="telephone1"><span>Telephone 1</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="telephone2"><span>Telephone 2</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="agrement.codeAgrement"><span>Agrement</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let entreprise of entreprises | filter:term">
+                    <!--td><a [routerLink]="['/entreprise', entreprise.id, 'view']">{{ entreprise.id }}</a></td-->
+                    <td>{{ entreprise.sigleEntreprise }}</td>
+                    <td>{{ entreprise.nomEntreprise }}</td>
+                    <td>{{ entreprise.numeroRCCM }}</td>
+                    <td>{{ entreprise.numeroIFU }}</td>
+                    <td>{{ entreprise.ville }}</td>
+                    <td>{{ entreprise.localisation }}</td>
+                    <td>{{ entreprise.telephone1 }}</td>
+                    <td>{{ entreprise.telephone2 }}</td>
+                    <td>
+                        <div *ngIf="entreprise.agrement">
+                            <a [routerLink]="['/agrement', entreprise.agrement?.id, 'view']" >{{ entreprise.agrement?.codeAgrement }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/entreprise', entreprise.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/entreprise', entreprise.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(entreprise)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="entreprises && entreprises.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

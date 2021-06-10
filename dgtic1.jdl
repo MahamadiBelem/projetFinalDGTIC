@@ -1,0 +1,65 @@
+entity Agrement {
+	codeAgrement String required
+}
+
+entity Qualification {
+	serviceConcerne TextBlob required
+}
+
+entity Domaine {
+        codeDomaine String required,
+	libelle TextBlob required     
+}
+
+
+entity Categorie {
+        codeCategorie String required,
+	libelle TextBlob required   
+}
+
+entity Arrete {
+        intituleArrete String,
+	numeroArrete String required,
+        dateSignature LocalDate required,
+        nombreAgrement Integer,
+        //dureeAgrement Integer,
+    
+    
+}
+
+entity Entreprise{
+    sigleEntreprise String required,
+    nomEntreprise TextBlob required,
+    numeroRCCM String,
+    numeroIFU String,
+    ville String,
+    localisation String,
+    telephone1 String,
+    telephone2 String
+}
+
+relationship OneToMany {
+   Arrete{agrement(codeAgrement)} to Agrement{arrete(numeroArrete)},
+    Domaine{categorie} to Categorie{domaine(codeDomaine)}
+    //Qualification{categorie(codeCategorie)} to Categorie,
+    //Qualification{domaine(codeDomaine)} to Domaine,
+     Domaine{qualification(serviceConcerne)} to Qualification{domaine(codeDomaine)},
+    Categorie{qualification(serviceConcerne)} to Qualification{categorie(codeCategorie)},
+    
+   // Arrete{agrement} to Agrement{ arrete(numeroArrete)}
+    Agrement{entreprise} to Entreprise{agrement(codeAgrement)}
+    //Qualification to Agrement{ qualification(serviceConcerne)}
+ 
+    //Qualification{agrement(codeAgrement)} to Qualification,
+   // Arrete{Entreprise(nomEntreprise)} to Entreprise{arrete(numeroArrete)}
+    
+}
+
+relationship ManyToMany {
+  //**Arrete{entreprise(nomEntreprise)} to Entreprise{arrete(numeroArrete)},
+  //Entreprise{arrete(numeroArrete)} to Arrete{entreprise(nomEntreprise)},
+ Agrement{qualification(serviceConcerne)} to Qualification{agrement} 
+}
+
+//paginate  with infinite-scroll
+paginate Categorie,Domaine,Arrete, Agrement,Qualification, Entreprise with pagination

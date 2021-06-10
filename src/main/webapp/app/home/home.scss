@@ -2,6 +2,28 @@
 Main page styles
 ========================================================================== */
 
+.card-title {
+  font-size: larger;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #0074d9;
+}
+
+.card-text {
+  font-style: normal;
+  font-weight: 100;
+}
+
+#footer-main {
+  background: #222;
+  color: white;
+  font-size: 0.8rem;
+  padding: 2.5rem 0;
+}
+
+.section-content {
+  padding: 5rem 0;
+}
+
 .hipster {
   display: inline-block;
   width: 347px;

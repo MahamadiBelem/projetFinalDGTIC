@@ -312,7 +312,8 @@
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-core</artifactId>
         </dependency>
-        <!-- jhipster-needle-maven-add-dependency -->
+        <!-- jhipster-needle-maven-add-dependency i put elastic-->
+
     </dependencies>
 
     <build>

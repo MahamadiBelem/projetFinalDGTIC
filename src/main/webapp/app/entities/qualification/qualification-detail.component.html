@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="qualification">
+            <h2><span>Qualification</span> {{ qualification.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Service Concerne</span></dt>
+                <dd>
+                    <span>{{ qualification.serviceConcerne }}</span>
+                </dd>
+                <dt><span>Domaine</span></dt>
+                <dd>
+                    <div *ngIf="qualification.domaine">
+                        <a [routerLink]="['/domaine', qualification.domaine?.id, 'view']">{{ qualification.domaine?.codeDomaine }}</a>
+                    </div>
+                </dd>
+                <dt><span>Categorie</span></dt>
+                <dd>
+                    <div *ngIf="qualification.categorie">
+                        <a [routerLink]="['/categorie', qualification.categorie?.id, 'view']">{{ qualification.categorie?.codeCategorie }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/qualification', qualification.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

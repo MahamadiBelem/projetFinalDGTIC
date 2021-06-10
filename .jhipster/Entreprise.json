@@ -1,0 +1,64 @@
+{
+  "name": "Entreprise",
+  "fields": [
+    {
+      "fieldName": "sigleEntreprise",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "nomEntreprise",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "numeroRCCM",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroIFU",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ville",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "localisation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telephone1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telephone2",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "agrement",
+      "otherEntityRelationshipName": "entreprise",
+      "relationshipName": "agrement",
+      "otherEntityField": "codeAgrement"
+    }
+  ],
+  "changelogDate": "20210523084855",
+  "entityTableName": "entreprise",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

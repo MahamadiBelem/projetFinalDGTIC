@@ -1,0 +1,46 @@
+{
+  "name": "Arrete",
+  "fields": [
+    {
+      "fieldName": "intituleArrete",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroArrete",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "dateSignature",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "nombreAgrement",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "agrement",
+      "otherEntityRelationshipName": "arrete",
+      "relationshipName": "agrement"
+    }
+  ],
+  "changelogDate": "20210523084755",
+  "entityTableName": "arrete",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

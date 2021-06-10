@@ -48,6 +48,19 @@ public class CacheConfiguration {
             createCache(cm, ati.dgtic.domain.User.class.getName());
             createCache(cm, ati.dgtic.domain.Authority.class.getName());
             createCache(cm, ati.dgtic.domain.User.class.getName() + ".authorities");
+            createCache(cm, ati.dgtic.domain.Agrement.class.getName());
+            createCache(cm, ati.dgtic.domain.Agrement.class.getName() + ".entreprises");
+            createCache(cm, ati.dgtic.domain.Agrement.class.getName() + ".qualifications");
+            createCache(cm, ati.dgtic.domain.Qualification.class.getName());
+            createCache(cm, ati.dgtic.domain.Qualification.class.getName() + ".agrements");
+            createCache(cm, ati.dgtic.domain.Domaine.class.getName());
+            createCache(cm, ati.dgtic.domain.Domaine.class.getName() + ".categories");
+            createCache(cm, ati.dgtic.domain.Domaine.class.getName() + ".qualifications");
+            createCache(cm, ati.dgtic.domain.Categorie.class.getName());
+            createCache(cm, ati.dgtic.domain.Categorie.class.getName() + ".qualifications");
+            createCache(cm, ati.dgtic.domain.Arrete.class.getName());
+            createCache(cm, ati.dgtic.domain.Arrete.class.getName() + ".agrements");
+            createCache(cm, ati.dgtic.domain.Entreprise.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

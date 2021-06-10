@@ -1,0 +1,56 @@
+<div style="box-shadow: 3px 3px 3px 3px; background-color: #E5E5E5 ; border-radius: 25px;">
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-qualification-heading">Modifier Qualification</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_serviceConcerne">Service Concerne</label>
+                    <textarea class="form-control" name="serviceConcerne" id="field_serviceConcerne"
+                              formControlName="serviceConcerne"></textarea>
+                    <div *ngIf="editForm.get('serviceConcerne')!.invalid && (editForm.get('serviceConcerne')!.dirty || editForm.get('serviceConcerne')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('serviceConcerne')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_domaine">Domaine</label>
+                    <select class="form-control" id="field_domaine" name="domaine" formControlName="domaine">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="domaineOption.id === editForm.get('domaine')!.value?.id ? editForm.get('domaine')!.value : domaineOption" *ngFor="let domaineOption of domaines; trackBy: trackById">{{ domaineOption.codeDomaine }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_categorie">Categorie</label>
+                    <select class="form-control" id="field_categorie" name="categorie" formControlName="categorie">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="categorieOption.id === editForm.get('categorie')!.value?.id ? editForm.get('categorie')!.value : categorieOption" *ngFor="let categorieOption of categories; trackBy: trackById">{{ categorieOption.codeCategorie }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="padbut">
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>

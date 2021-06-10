@@ -37,9 +37,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/ProjetDGTIC
-    username: ProjetDGTIC
-    password:
+    url: jdbc:postgresql://localhost:5432/projetic
+    username: postgres
+    password: bhm
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -61,8 +61,6 @@ spring:
 
 server:
   port: 8080
-
-# ===================================================================
 # JHipster specific properties
 #
 # Full reference is available at: https://www.jhipster.tech/common-application-properties/

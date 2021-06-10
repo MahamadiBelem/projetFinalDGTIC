@@ -13,6 +13,28 @@ h3,
 h4 {
   font-weight: 300;
 }
+//me
+
+td,
+th {
+  font-size: larger;
+}
+dt,
+dd {
+  background-color: antiquewhite;
+  font-size: larger;
+}
+.padbut {
+  padding-bottom: 10px;
+}
+.card-title {
+  font-size: larger;
+}
+.span1 {
+  text-align: center;
+  color: red;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 
 /* Increase contrast of links to get 100% on Lighthouse Accessability Audit. Override this color if you want to change the link color, or use a Bootswatch theme */
 a {

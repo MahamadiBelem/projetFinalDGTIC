@@ -1,0 +1,46 @@
+{
+  "name": "Agrement",
+  "fields": [
+    {
+      "fieldName": "codeAgrement",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "entreprise",
+      "otherEntityRelationshipName": "agrement",
+      "relationshipName": "entreprise"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "qualification",
+      "otherEntityRelationshipName": "agrement",
+      "relationshipName": "qualification",
+      "otherEntityField": "serviceConcerne",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "arrete",
+      "otherEntityRelationshipName": "agrement",
+      "relationshipName": "arrete",
+      "otherEntityField": "numeroArrete"
+    }
+  ],
+  "changelogDate": "20210523084355",
+  "entityTableName": "agrement",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

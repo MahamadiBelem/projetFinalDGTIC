@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="entreprise">
+            <h2><span>Entreprise</span> {{ entreprise.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Sigle Entreprise</span></dt>
+                <dd>
+                    <span>{{ entreprise.sigleEntreprise }}</span>
+                </dd>
+                <dt><span>Nom Entreprise</span></dt>
+                <dd>
+                    <span>{{ entreprise.nomEntreprise }}</span>
+                </dd>
+                <dt><span>Numero RCCM</span></dt>
+                <dd>
+                    <span>{{ entreprise.numeroRCCM }}</span>
+                </dd>
+                <dt><span>Numero IFU</span></dt>
+                <dd>
+                    <span>{{ entreprise.numeroIFU }}</span>
+                </dd>
+                <dt><span>Ville</span></dt>
+                <dd>
+                    <span>{{ entreprise.ville }}</span>
+                </dd>
+                <dt><span>Localisation</span></dt>
+                <dd>
+                    <span>{{ entreprise.localisation }}</span>
+                </dd>
+                <dt><span>Telephone 1</span></dt>
+                <dd>
+                    <span>{{ entreprise.telephone1 }}</span>
+                </dd>
+                <dt><span>Telephone 2</span></dt>
+                <dd>
+                    <span>{{ entreprise.telephone2 }}</span>
+                </dd>
+                <dt><span>Agrement</span></dt>
+                <dd>
+                    <div *ngIf="entreprise.agrement">
+                        <a [routerLink]="['/agrement', entreprise.agrement?.id, 'view']">{{ entreprise.agrement?.codeAgrement }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/entreprise', entreprise.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

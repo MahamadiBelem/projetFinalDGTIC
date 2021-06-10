@@ -1,8 +1,9 @@
+<div style="box-shadow: 3px 3px 3px 3px; background-color: #E5E5E5 ; border-radius: 25px;">
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="myUserLabel">
-                Create or edit a User
+                Modifier un User
             </h2>
 
             <div *ngIf="user">
@@ -105,7 +106,7 @@
                 </div>
             </div>
 
-            <div *ngIf="user">
+            <div  class="padbut" *ngIf="user">
                 <button type="button" class="btn btn-secondary" (click)="previousState()">
                     <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
                 </button>
@@ -116,4 +117,5 @@
             </div>
         </form>
     </div>
+</div>
 </div>

@@ -1,0 +1,93 @@
+<h1 style="text-align: center; color: #007000; background:black; font-family: Verdana, Geneva, Tahoma, sans-serif;">Gestion des Arretes</h1>
+<div style="background-color: #0070c0;color: white;">
+    <!--span class="span1">Arretes</span-->
+<br>
+
+</div>
+<br>
+<h2 id="page-heading">
+      
+
+    <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-arrete" [routerLink]="['/arrete/new']">
+        <fa-icon icon="plus"></fa-icon>
+        <span>
+        Nouveau
+        </span>
+    </button>
+</h2>
+<br>
+<br>
+<div style="background-color: #0070c0;color: white;">
+    <!--span class="span1">Arretes</span-->
+<br>
+
+</div>
+<br>
+<div>
+   
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="arretes?.length === 0">
+        <span>No arretes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="arretes && arretes.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <!--th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"  jhiSortBy="intituleArrete"><span>Intitule Arrete</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numeroArrete"><span>Numero Arrete</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateSignature"><span>Date Signature</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nombreAgrement"><span>Nombre Agrement</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let arrete of arretes ;trackBy: trackId">
+                    <!--td><a [routerLink]="['/arrete', arrete.id, 'view']">{{ arrete.id }}</a></td-->
+                    <td>{{ arrete.intituleArrete }}</td>
+                    <td>{{ arrete.numeroArrete }}</td>
+                    <td>{{ arrete.dateSignature | date:'mediumDate' }}</td>
+                    <td>{{ arrete.nombreAgrement }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <!--button type="submit"
+                                    [routerLink]="['/arrete', arrete.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button-->
+
+                            <button type="submit"
+                                    [routerLink]="['/arrete', arrete.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(arrete)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="arretes && arretes.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+{
+  "name": "Categorie",
+  "fields": [
+    {
+      "fieldName": "codeCategorie",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "qualification",
+      "otherEntityRelationshipName": "categorie",
+      "relationshipName": "qualification"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "domaine",
+      "otherEntityRelationshipName": "categorie",
+      "relationshipName": "domaine",
+      "otherEntityField": "codeDomaine"
+    }
+  ],
+  "changelogDate": "20210523084655",
+  "entityTableName": "categorie",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

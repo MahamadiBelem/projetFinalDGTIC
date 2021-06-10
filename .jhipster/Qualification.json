@@ -1,0 +1,48 @@
+{
+  "name": "Qualification",
+  "fields": [
+    {
+      "fieldName": "serviceConcerne",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "domaine",
+      "otherEntityRelationshipName": "qualification",
+      "relationshipName": "domaine",
+      "otherEntityField": "codeDomaine"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "categorie",
+      "otherEntityRelationshipName": "qualification",
+      "relationshipName": "categorie",
+      "otherEntityField": "codeCategorie"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "agrement",
+      "otherEntityRelationshipName": "qualification",
+      "relationshipName": "agrement",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210523084455",
+  "entityTableName": "qualification",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

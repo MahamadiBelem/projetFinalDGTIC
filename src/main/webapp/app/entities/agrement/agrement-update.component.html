@@ -1,0 +1,55 @@
+<div style="box-shadow: 3px 3px 3px 3px; background-color: #E5E5E5 ; border-radius: 25px;">
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-agrement-heading">Modifier Agrement</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_codeAgrement">Code Agrement</label>
+                    <input type="text" class="form-control" name="codeAgrement" id="field_codeAgrement"
+                           formControlName="codeAgrement"/>
+                    <div *ngIf="editForm.get('codeAgrement')!.invalid && (editForm.get('codeAgrement')!.dirty || editForm.get('codeAgrement')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codeAgrement')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="field_qualifications">Qualification</label>
+                    <select class="form-control" id="field_qualifications" multiple name="qualifications" formControlName="qualifications">
+                        <option [ngValue]="getSelected(editForm.get('qualifications')!.value, qualificationOption)" *ngFor="let qualificationOption of qualifications; trackBy: trackById">{{ qualificationOption.serviceConcerne }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_arrete">Arrete</label>
+                    <select class="form-control" id="field_arrete" name="arrete" formControlName="arrete">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="arreteOption.id === editForm.get('arrete')!.value?.id ? editForm.get('arrete')!.value : arreteOption" *ngFor="let arreteOption of arretes; trackBy: trackById">{{ arreteOption.numeroArrete }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="padbut">
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>

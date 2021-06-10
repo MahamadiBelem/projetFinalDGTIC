@@ -1,0 +1,45 @@
+{
+  "name": "Domaine",
+  "fields": [
+    {
+      "fieldName": "codeDomaine",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "categorie",
+      "otherEntityRelationshipName": "domaine",
+      "relationshipName": "categorie"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "qualification",
+      "otherEntityRelationshipName": "domaine",
+      "relationshipName": "qualification"
+    }
+  ],
+  "changelogDate": "20210523084555",
+  "entityTableName": "domaine",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

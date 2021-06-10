@@ -1,0 +1,139 @@
+<h1 style="text-align: center; color: #007000; background:black; font-family: Verdana, Geneva, Tahoma, sans-serif;">Gestion des Domaines</h1>
+<div style="background-color: #0070c0;color: white;">
+    <!--span class="span1">Arretes</span-->
+<br>
+
+</div>
+<br>
+<jhi-alert-error></jhi-alert-error>
+<jhi-alert></jhi-alert>
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+   
+
+    <div class="form-row">
+
+
+        <div class="col-md-3 mb-3" [hidden]="!editForm.get('id')!.value">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label class="form-control-label" for="field_codeDomaine">Code Domaine</label>
+            <textarea type="text" class="form-control" name="codeDomaine" id="field_codeDomaine"
+                   formControlName="codeDomaine"> </textarea>
+            <div *ngIf="editForm.get('codeDomaine')!.invalid && (editForm.get('codeDomaine')!.dirty || editForm.get('codeDomaine')!.touched)">
+                <small class="form-text text-danger"
+                       *ngIf="editForm.get('codeDomaine')?.errors?.required">
+                This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label class="form-control-label" for="field_libelle">Libelle</label>
+            <textarea class="form-control" name="libelle" id="field_libelle"
+                      formControlName="libelle"></textarea>
+            <div *ngIf="editForm.get('libelle')!.invalid && (editForm.get('libelle')!.dirty || editForm.get('libelle')!.touched)">
+                <small class="form-text text-danger"
+                       *ngIf="editForm.get('libelle')?.errors?.required">
+                This field is required.
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="padbut">
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+            <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+            <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
+
+
+
+<br>
+
+<div style="background-color: #0070c0;color: white;">
+    <!--span class="span1">Arretes</span-->
+<br>
+
+</div>
+<br>
+<div>
+    <!--h2 id="page-heading">
+        <span>Domaines</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-domaine" [routerLink]="['/domaine/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Nouveau
+            </span>
+        </button>
+    </h2-->
+
+    <jhi-alert-error></jhi-alert-error>
+
+    
+
+    <div class="alert alert-warning" id="no-result" *ngIf="domaines?.length === 0">
+        <span>No domaines found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="domaines && domaines.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <!--th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"  jhiSortBy="codeDomaine"><span>Code Domaine</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="libelle"><span>Libelle</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let domaine of domaines ;trackBy: trackId">
+                    <!--td><a [routerLink]="['/domaine', domaine.id, 'view']">{{ domaine.id }}</a></td-->
+                    <td>{{ domaine.codeDomaine }}</td>
+                    <td>{{ domaine.libelle }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <!--utton type="submit"
+                                    [routerLink]="['/domaine', domaine.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button-->
+
+                            <button type="submit"
+                                    [routerLink]="['/domaine', domaine.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(domaine)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="domaines && domaines.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

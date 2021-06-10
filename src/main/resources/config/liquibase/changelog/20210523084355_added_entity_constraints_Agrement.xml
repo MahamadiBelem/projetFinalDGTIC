@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Agrement.
+    -->
+    <changeSet id="20210523084355-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="agrement_id"
+                                 baseTableName="agrement_qualification"
+                                 constraintName="fk_agrement_qualification_agrement_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="agrement"/>
+
+        <addForeignKeyConstraint baseColumnNames="qualification_id"
+                                 baseTableName="agrement_qualification"
+                                 constraintName="fk_agrement_qualification_qualification_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="qualification"/>
+        
+        <addForeignKeyConstraint baseColumnNames="arrete_id"
+                                 baseTableName="agrement"
+                                 constraintName="fk_agrement_arrete_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="arrete"/>
+
+    </changeSet>
+</databaseChangeLog>

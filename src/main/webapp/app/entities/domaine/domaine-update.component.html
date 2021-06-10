@@ -1,0 +1,52 @@
+<div style="box-shadow: 3px 3px 3px 3px; background-color: #E5E5E5 ; border-radius: 25px;">
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-domaine-heading">Create or edit a Domaine</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_codeDomaine">Code Domaine</label>
+                    <input type="text" class="form-control" name="codeDomaine" id="field_codeDomaine"
+                           formControlName="codeDomaine"/>
+                    <div *ngIf="editForm.get('codeDomaine')!.invalid && (editForm.get('codeDomaine')!.dirty || editForm.get('codeDomaine')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codeDomaine')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_libelle">Libelle</label>
+                    <textarea class="form-control" name="libelle" id="field_libelle"
+                              formControlName="libelle"></textarea>
+                    <div *ngIf="editForm.get('libelle')!.invalid && (editForm.get('libelle')!.dirty || editForm.get('libelle')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('libelle')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="padbut">
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
