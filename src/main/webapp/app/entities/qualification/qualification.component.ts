@@ -25,6 +25,10 @@ export class QualificationComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+  filter = '';
+  orderProp = 'name';
+  reverse = false;
+
   constructor(
     protected qualificationService: QualificationService,
     protected activatedRoute: ActivatedRoute,

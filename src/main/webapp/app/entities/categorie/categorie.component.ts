@@ -33,6 +33,10 @@ export class CategorieComponent implements OnInit, OnDestroy {
   isSaving = false;
   domaines: IDomaine[] = [];
 
+  filter = '';
+  orderProp = 'name';
+  reverse = false;
+
   editForm = this.fb.group({
     id: [],
     codeCategorie: [null, [Validators.required]],

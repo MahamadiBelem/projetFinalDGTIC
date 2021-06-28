@@ -25,6 +25,10 @@ export class ArreteComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+  filter = '';
+  orderProp = 'name';
+  reverse = false;
+
   constructor(
     protected arreteService: ArreteService,
     protected activatedRoute: ActivatedRoute,

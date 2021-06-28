@@ -38,6 +38,7 @@
         <span>No agrements found</span>
     </div>
 
+    <span>Filter</span> <input type="text" [(ngModel)]="filter" class="form-control">
     <div class="table-responsive" id="entities" *ngIf="agrements && agrements.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
@@ -50,7 +51,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let agrement of agrements ;trackBy: trackId">
+                <tr *ngFor="let agrement of agrements  | pureFilter:filter:'codeAgrement' ">
                     <!--td><a [routerLink]="['/agrement', agrement.id, 'view']">{{ agrement.id }}</a></td-->
                     <td>{{ agrement.codeAgrement }}</td>
                     <td>

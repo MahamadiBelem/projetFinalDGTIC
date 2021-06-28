@@ -1,3 +1,8 @@
+
+<div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="card-deck"> 
+
+
+
 <h1 style="text-align: center; color: #007000; background:black; font-family: Verdana, Geneva, Tahoma, sans-serif;">Gestion des Entreprises</h1>
 <div style="background-color: #0070c0;color: white;">
     <!--span class="span1">Arretes</span-->
@@ -12,7 +17,10 @@
 
 </div>
 <br>
+</div>
+
 <div>
+<div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="card-deck"> 
     <h2 id="page-heading">
         
 
@@ -31,12 +39,18 @@
     <div class="alert alert-warning" id="no-result" *ngIf="entreprises?.length === 0">
         <span>No entreprises found</span>
     </div>
+</div>
 
-
-
-    <div class="form-group">
+    <!--form class="form-inline pull-xs-right">
+        <input class="form-control" type="text" [(ngModel)]="req" placeholder="Search">
+        <button class="btn btn-danger" (click)="query(req)" >Search</button>
+    </form-->
+    <!--div class="form-group"> (click)="query()"
         <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
-    </div>
+    </div-->
+
+    <span class="span1">Entrer votre recherche</span> <input type="text" [(ngModel)]="filter" class="form-control">
+
     <div class="table-responsive" id="entities" *ngIf="entreprises && entreprises.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
@@ -55,7 +69,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let entreprise of entreprises | filter:term">
+                <tr *ngFor="let entreprise of entreprises | pureFilter:filter:'ville' ">
                     <!--td><a [routerLink]="['/entreprise', entreprise.id, 'view']">{{ entreprise.id }}</a></td-->
                     <td>{{ entreprise.sigleEntreprise }}</td>
                     <td>{{ entreprise.nomEntreprise }}</td>
@@ -97,6 +111,7 @@
             </tbody>
         </table>
     </div>
+
 
     <div *ngIf="entreprises && entreprises.length > 0">
         <div class="row justify-content-center">

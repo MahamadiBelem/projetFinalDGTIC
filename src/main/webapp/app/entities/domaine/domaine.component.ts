@@ -29,6 +29,10 @@ export class DomaineComponent implements OnInit, OnDestroy {
   //
   isSaving = false;
 
+  filter = '';
+  orderProp = 'name';
+  reverse = false;
+
   editForm = this.fb.group({
     id: [],
     codeDomaine: [null, [Validators.required]],

@@ -34,6 +34,7 @@
         <span>No arretes found</span>
     </div>
 
+    <span>Filter</span> <input type="text" [(ngModel)]="filter" class="form-control">
     <div class="table-responsive" id="entities" *ngIf="arretes && arretes.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
@@ -47,7 +48,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let arrete of arretes ;trackBy: trackId">
+                <tr *ngFor="let arrete of arretes | pureFilter:filter:'numeroArrete' ">
                     <!--td><a [routerLink]="['/arrete', arrete.id, 'view']">{{ arrete.id }}</a></td-->
                     <td>{{ arrete.intituleArrete }}</td>
                     <td>{{ arrete.numeroArrete }}</td>

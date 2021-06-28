@@ -5,7 +5,7 @@ import { Subscription, combineLatest } from 'rxjs';
 import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IEntreprise } from 'app/shared/model/entreprise.model';
+import { Entreprise, IEntreprise } from 'app/shared/model/entreprise.model';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { EntrepriseService } from './entreprise.service';
@@ -16,7 +16,7 @@ import { EntrepriseDeleteDialogComponent } from './entreprise-delete-dialog.comp
   templateUrl: './entreprise.component.html',
 })
 export class EntrepriseComponent implements OnInit, OnDestroy {
-  entreprises?: IEntreprise[];
+  entreprises?: Entreprise[];
   eventSubscriber?: Subscription;
   totalItems = 0;
   itemsPerPage = ITEMS_PER_PAGE;
@@ -25,7 +25,12 @@ export class EntrepriseComponent implements OnInit, OnDestroy {
   // term!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
-  term: string = '';
+  term!: string;
+  req!: any;
+
+  filter = '';
+  orderProp = 'name';
+  reverse = false;
 
   constructor(
     protected entrepriseService: EntrepriseService,
@@ -125,5 +130,9 @@ export class EntrepriseComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+  //*** */ My function to make research
+  query(req: any): void {
+    this.entrepriseService.find;
   }
 }

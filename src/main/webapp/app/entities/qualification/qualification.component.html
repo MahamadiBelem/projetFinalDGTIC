@@ -1,3 +1,5 @@
+<div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="card-deck">
+
 <h1 style="text-align: center; color: #007000; background:black; font-family: Verdana, Geneva, Tahoma, sans-serif;">Gestion des Qualifications</h1>
 <div style="background-color: #0070c0;color: white;">
     <!--span class="span1">Arretes</span-->
@@ -13,7 +15,13 @@
 
 </div>
 <br>
+</div>
+
+
+
+
 <div>
+<div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="card-deck">
     <h2 id="page-heading">
         <!--span>Qualifications</span-->
 
@@ -28,11 +36,13 @@
     <jhi-alert-error></jhi-alert-error>
 
     <jhi-alert></jhi-alert>
+</div>
 
     <div class="alert alert-warning" id="no-result" *ngIf="qualifications?.length === 0">
         <span>No qualifications found</span>
     </div>
 
+    <span class="span1">Entrer votre recherche</span> <input type="text" [(ngModel)]="filter" class="form-control">
     <div class="table-responsive" id="entities" *ngIf="qualifications && qualifications.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
@@ -45,7 +55,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let qualification of qualifications ;trackBy: trackId">
+                <tr *ngFor="let qualification of qualifications  | pureFilter:filter:'serviceConcerne'">
                     <!--td><a [routerLink]="['/qualification', qualification.id, 'view']">{{ qualification.id }}</a></td-->
                     <td>{{ qualification.serviceConcerne }}</td>
                     <td>

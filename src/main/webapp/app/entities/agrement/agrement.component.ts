@@ -25,6 +25,10 @@ export class AgrementComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+  filter = '';
+  orderProp = 'name';
+  reverse = false;
+
   constructor(
     protected agrementService: AgrementService,
     protected activatedRoute: ActivatedRoute,

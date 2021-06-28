@@ -1,3 +1,5 @@
+
+
 <div style="background-color: #0070c0;color: white;">
   <!--span class="span1">Arretes</span-->
 <br>
@@ -5,7 +7,7 @@
 </div>
 <br>
 
-<div class="progress">
+<!--div class="progress">
     <div class="progress">
       <div class="progress-bar bg-warning" role="progressbar" style="width: 75%; background-color: red;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
@@ -14,7 +16,7 @@
     </div>
 </div>
 
-<br>
+<br-->
 
 <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="card-deck"> 
     <br>
@@ -126,14 +128,43 @@
 <br>
   
 
-<form class="form-inline pull-xs-right">
-    <input class="form-control" type="text" placeholder="Search">
-    <button class="btn btn-danger" type="submit">Search</button>
-</form>
-<br>   
-  
+<!--form class="form-inline pull-xs-right">
+    <!--input class="form-control" type="text" placeholder="Search">
+    <button class="btn btn-danger" type="submit">
+        <a class="dropdown-item" routerLink="qualification" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" (click)="collapseNavbar()">
+    Rechercher qualification
+       </a>
+   </button>
+<br>
+   <button  class="btn btn-secondary" type="submit">
+    <a class="dropdown-item" routerLink="entreprise" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" (click)="collapseNavbar()">
+      Rechercher entreprise
+  </a>
+  </button>
+</form> 
+<br>
 
 
+<br>
+<br-->
+
+<div class="padbut">
+<button type="submit" id="save-entity" class="btn btn-success">
+  <a class="dropdown-item" routerLink="qualification" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" (click)="collapseNavbar()">
+    Rechercher qualification
+</a>
+</button>
+
+  <button type="submit" id="save-entity" class="btn btn-primary">
+      <a class="dropdown-item" routerLink="entreprise" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" (click)="collapseNavbar()">
+        Rechercher entreprise
+    </a>
+  </button>
+</div>
+
+<!--div class="form-group">
+  <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
+</div-->
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -159,10 +190,10 @@
                     <th scope="col" ><span>Telephone 1</span></th>
                     <th scope="col" ><span>Telephone 2</span></th-->
                     <th scope="col" ><span>Arrete</span></th>
-                    <th scope="col" ><span>Localisation</span></th>
                     <th scope="col" ><span>Agrement</span></th>
+                    <!--th scope="col" ><span>Agrement</span></th>
                     <th scope="col" ><span>Status</span></th>
-                    <th scope="col" ><span>Qualification</span></th>
+                    <th scope="col" ><span>Qualification</span></th-->
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -175,7 +206,7 @@
                         <th>Start date</th>
                         <th>Salary</th>
                     </tr>
-                </tfoot-->
+                </tfoot          | filter:term-->
                 <tbody>
                     <tr>
                         <td>Tiger Nixon</td>
@@ -184,9 +215,9 @@
                         <td>61</td>
                         <td>2011/04/25</td>
                         <td>$320,800</td>
-                        <td>ATI-2017-001</td>
+                        <!--td>ATI-2017-001</td>
                         <td>actif</td>
-                        <td>ventes materiels</td>
+                        <td>ventes materiels</td-->
                     </tr>
                     <tr>
                         <td>Garrett Winters</td>
@@ -195,9 +226,9 @@
                         <td>63</td>
                         <td>2011/07/25</td>
                         <td>$170,750</td>
-                        <td>ATI-2017-001</td>
+                        <!--td>ATI-2017-001</td>
                         <td>actif</td>
-                        <td>ventes materiels</td>
+                        <td>ventes materiels</td-->
                     </tr>
                     <tr>
                         <td>Ashton Cox</td>
@@ -206,9 +237,9 @@
                         <td>66</td>
                         <td>2009/01/12</td>
                         <td>$86,000</td>
-                        <td>ATI-2017-001</td>
+                        <!--td>ATI-2017-001</td>
                         <td>actif</td>
-                        <td>ventes materiels</td>
+                        <td>ventes materiels</td-->
                     </tr>
                     
                 </tbody>
@@ -254,10 +285,15 @@
   <button class="btn btn-danger" type="submit">Search</button>
 </form-->
 <br>
-
-
-
-<form>
+<!--br>
+<button class="btn btn-danger" type="submit">
+  <a class="dropdown-item" routerLink="qualification" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" (click)="collapseNavbar()">
+    Rechercher qualification
+</a>
+</button>
+<br>
+<br-->
+<!--form>
     <div class="form-row">
       <div class="col-md-3 mb-3">
         <label class="form-control-label" for="field_domaine">Domaine</label>
@@ -266,7 +302,7 @@
       </div>
       <!--div class="col-md-3 mb-3">
         <input type="text" class="form-control" placeholder="State">
-      </div-->
+      </div>
       <div class="col-md-3 mb-3">
         <label class="form-control-label" for="field_categorie">Categorie</label>
         <select type="text" class="form-control" placeholder="State">
@@ -286,17 +322,16 @@
         </button>
     </div>
     <!--button  type="submit" class="btn btn-primary">
-        <span class="span1">Categories</span></button-->
+        <span class="span1">Categories</span></button>
 
 
 </form>
 
-<button class="btn btn-danger" type="submit">Search</button>
 <br>
-<br>
+<br-->
 
 
-<div class="card-body">
+<!--div class="card-body">
   <div class="table-responsive">
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
@@ -314,7 +349,87 @@
       </table>
   </div>
 </div>
+
+<br-->
+<br>
+
+
+
+<!--span>Filter</span> <input type="text" [(ngModel)]="filter" class="form-control">
+
+<div class="table-responsive" id="entities" *ngIf="entreprises && entreprises.length > 0">
+  <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+              <!--th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+              <th scope="col"  jhiSortBy="sigleEntreprise"><span>Sigle Entreprise</span> <fa-icon icon="sort"></fa-icon></th>
+              <th scope="col"  jhiSortBy="nomEntreprise"><span>Entreprise</span> <fa-icon icon="sort"></fa-icon></th>
+              <th scope="col"  jhiSortBy="numeroRCCM"><span> RCCM</span> <fa-icon icon="sort"></fa-icon></th>
+              <th scope="col"  jhiSortBy="numeroIFU"><span>IFU</span> <fa-icon icon="sort"></fa-icon></th>
+              <th scope="col"  jhiSortBy="ville"><span>Ville</span> <fa-icon icon="sort"></fa-icon></th>
+              <th scope="col"  jhiSortBy="localisation"><span>Localisation</span> <fa-icon icon="sort"></fa-icon></th>
+              <th scope="col"  jhiSortBy="telephone1"><span>Telephone 1</span> <fa-icon icon="sort"></fa-icon></th>
+              <th scope="col"  jhiSortBy="telephone2"><span>Telephone 2</span> <fa-icon icon="sort"></fa-icon></th>
+              <th scope="col"  jhiSortBy="agrement.codeAgrement"><span>Agrement</span> <fa-icon icon="sort"></fa-icon></th>
+              <th scope="col"></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let entreprise of entreprises | pureFilter:filter:'ville' ">
+              <!--td><a [routerLink]="['/entreprise', entreprise.id, 'view']">{{ entreprise.id }}</a></td>
+              <td>{{ entreprise.sigleEntreprise }}</td>
+              <td>{{ entreprise.nomEntreprise }}</td>
+              <td>{{ entreprise.numeroRCCM }}</td>
+              <td>{{ entreprise.numeroIFU }}</td>
+              <td>{{ entreprise.ville }}</td>
+              <td>{{ entreprise.localisation }}</td>
+              <td>{{ entreprise.telephone1 }}</td>
+              <td>{{ entreprise.telephone2 }}</td>
+              <td>
+                  <div *ngIf="entreprise.agrement">
+                      <a [routerLink]="['/agrement', entreprise.agrement?.id, 'view']" >{{ entreprise.agrement?.codeAgrement }}</a>
+                  </div>
+              </td>
+              <!--td class="text-right">
+                  <div class="btn-group">
+                      <button type="submit"
+                              [routerLink]="['/entreprise', entreprise.id, 'view']"
+                              class="btn btn-info btn-sm">
+                          <fa-icon icon="eye"></fa-icon>
+                          <span class="d-none d-md-inline">View</span>
+                      </button>
+
+                      <button type="submit"
+                              [routerLink]="['/entreprise', entreprise.id, 'edit']"
+                              class="btn btn-primary btn-sm">
+                          <fa-icon icon="pencil-alt"></fa-icon>
+                          <span class="d-none d-md-inline">Edit</span>
+                      </button>
+
+                      <button type="submit" (click)="delete(entreprise)"
+                              class="btn btn-danger btn-sm">
+                          <fa-icon icon="times"></fa-icon>
+                          <span class="d-none d-md-inline">Delete</span>
+                      </button>
+                  </div>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div-->
    
+
+<div *ngIf="entreprises && entreprises.length > 0">
+  <div class="row justify-content-center">
+      <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+  </div>
+
+  <div class="row justify-content-center">
+      <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+  </div>
+</div>
+
+
 <br>
 <br>
 <footer id="footer-main">

@@ -92,10 +92,19 @@ public class EntrepriseResource {
      * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of entreprises in body.
      */
-    @GetMapping("/entreprises")
+   /* @GetMapping("/entreprises")
     public ResponseEntity<List<Entreprise>> getAllEntreprises(Pageable pageable) {
         log.debug("REST request to get a page of Entreprises");
         Page<Entreprise> page = entrepriseRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }*/
+
+    //My ressources
+    @GetMapping("/entreprises")
+    public ResponseEntity<List<Entreprise>> getAllEntreprises(Pageable pageable, @RequestParam(required=false) String element){
+        log.debug("REST request to get a page of Entreprises");
+        Page<Entreprise> page = entrepriseRepository.findAll(pageable,element);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
