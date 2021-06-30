@@ -5,7 +5,7 @@
     },
     "jhipsterVersion": "6.10.3",
     "applicationType": "monolith",
-    "baseName": "ProjetDGTIC",
+    "baseName": "dgtic",
     "packageName": "ati.dgtic",
     "packageFolder": "ati/dgtic",
     "serverPort": "8080",
@@ -35,6 +35,9 @@
     "dtoSuffix": "DTO",
     "otherModules": [],
     "enableTranslation": false,
-    "blueprints": []
+    "blueprints": [],
+    "herokuAppName": "dgtic",
+    "herokuDeployType": "git",
+    "herokuJavaVersion": "1.8"
   }
 }
