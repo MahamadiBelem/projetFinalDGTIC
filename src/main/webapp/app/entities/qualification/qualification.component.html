@@ -76,7 +76,7 @@
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline">View</span>
                             </button>
-
+                        <div *jhiHasAnyAuthority="'ROLE_ADMIN'">
                             <button type="submit"
                                     [routerLink]="['/qualification', qualification.id, 'edit']"
                                     class="btn btn-primary btn-sm">
@@ -89,6 +89,7 @@
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline">Delete</span>
                             </button>
+                        </div>
                         </div>
                     </td>
                 </tr>
