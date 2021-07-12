@@ -1,27 +1,19 @@
-
-<div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="card-deck"> 
-
-
-
-<h1 style="text-align: center; color: #007000; background:black; font-family: Verdana, Geneva, Tahoma, sans-serif;">Gestion des Entreprises</h1>
-<div style="background-color: #0070c0;color: white;">
+<h1 style="text-align: center; color: #007000; background:black; font-family: Verdana, Geneva, Tahoma, sans-serif;" *jhiHasAnyAuthority="'ROLE_ADMIN'">Gestion des Entreprises</h1>
+<div style="background-color: #0070c0;color: white;" *jhiHasAnyAuthority="'ROLE_ADMIN'">
     <!--span class="span1">Arretes</span-->
 <br>
 
 </div>
 <br>
 
-<div style="background-color: #0070c0;color: white;">
+<div style="background-color: #0070c0;color: white;" *jhiHasAnyAuthority="'ROLE_ADMIN'">
     <!--span class="span1">Arretes</span-->
 <br>
 
 </div>
 <br>
-</div>
-
 <div>
-<div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="card-deck"> 
-    <h2 id="page-heading">
+    <h2 id="page-heading" *jhiHasAnyAuthority="'ROLE_ADMIN'">
         
 
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-entreprise" [routerLink]="['/entreprise/new']">
@@ -39,7 +31,7 @@
     <div class="alert alert-warning" id="no-result" *ngIf="entreprises?.length === 0">
         <span>No entreprises found</span>
     </div>
-</div>
+
 
     <!--form class="form-inline pull-xs-right">
         <input class="form-control" type="text" [(ngModel)]="req" placeholder="Search">
@@ -49,7 +41,7 @@
         <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
     </div-->
 
-    <span class="span1">Entrer votre recherche</span> <input type="text" [(ngModel)]="filter" class="form-control">
+    <span>Entrer la recherche</span> <input type="text" [(ngModel)]="filter" class="form-control">
 
     <div class="table-responsive" id="entities" *ngIf="entreprises && entreprises.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
@@ -92,27 +84,25 @@
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline">View</span>
                             </button>
-                        <div *jhiHasAnyAuthority="'ROLE_ADMIN'">
-                            <button type="submit"
+
+                            <button type="submit" *jhiHasAnyAuthority="'ROLE_ADMIN'"
                                     [routerLink]="['/entreprise', entreprise.id, 'edit']"
                                     class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline">Edit</span>
                             </button>
 
-                            <button type="submit" (click)="delete(entreprise)"
+                            <button type="submit" *jhiHasAnyAuthority="'ROLE_ADMIN'" (click)="delete(entreprise)"
                                     class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline">Delete</span>
                             </button>
-                        </div>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-
 
     <div *ngIf="entreprises && entreprises.length > 0">
         <div class="row justify-content-center">

@@ -35,4 +35,8 @@ export class EntrepriseService {
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
+
+  /*compter(id: number): Observable<EntityArrayResponseType> {
+    return this.http.get<IEntreprise[]>(this.resourceUrl, {observe: 'response' });
+  }*/
 }

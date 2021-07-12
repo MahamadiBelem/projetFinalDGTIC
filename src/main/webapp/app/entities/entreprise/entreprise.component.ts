@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, ParamMap, Router, Data } from '@angular/router';
 import { Subscription, combineLatest } from 'rxjs';
 import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
@@ -135,4 +135,14 @@ export class EntrepriseComponent implements OnInit, OnDestroy {
   query(req: any): void {
     this.entrepriseService.find;
   }
+  /*
+  compter(id: number){
+    this.entrepriseService.create().subscribe(
+      (res HttpResponse<IEntreprise>){
+      this.book = res.body;
+    }
+    (res: HttpErrorResponse)
+    console.log(res.message)
+    );
+  }*/
 }

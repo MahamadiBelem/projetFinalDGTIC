@@ -122,6 +122,25 @@ public class EntrepriseResource {
         return ResponseUtil.wrapOrNotFound(entreprise);
     }
 
+/* ##############################################################
+    public Optional<Entreprise> compter(Long id)
+    {
+       Optional<Entreprise> entreprise = entrepriseRepository.findById(id);
+       if(entreprise.isPresent()){
+           int quantity = entreprise.get().getQuantity()
+       }
+       if(quantity > 0){
+           entreprise.get().setQuantity(quantity - 1) ;
+           entreprise = entrepriseRepository.save(entreprise)
+           return entreprise;
+       }
+       else{
+           throw new BadRequestAlertException("Entreprise is not in stock", "entreprise", "not in stock");
+       }
+       return Optional.empty(); 
+    }
+###############################################################*/
+
     /**
      * {@code DELETE  /entreprises/:id} : delete the "id" entreprise.
      *

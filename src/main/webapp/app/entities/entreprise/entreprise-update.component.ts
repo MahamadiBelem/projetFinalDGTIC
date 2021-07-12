@@ -120,7 +120,8 @@ export class EntrepriseUpdateComponent implements OnInit {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
-    this.previousState();
+    this.editForm.reset();
+    // this.previousState();
   }
 
   protected onSaveError(): void {

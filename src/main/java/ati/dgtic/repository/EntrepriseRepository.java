@@ -17,6 +17,8 @@ import org.springframework.data.repository.query.Param;
 public interface EntrepriseRepository extends JpaRepository<Entreprise, Long> {
     @Query("select e  from Entreprise e inner join Agrement a on e.agrement.id = a.id where :element is null or e.numeroRCCM = :element")
     Page<Entreprise> findAll(Pageable pageable, @Param("element") String element);
+    
+   /* Optional<Entreprise> compter(Long id);*/
 }
 
 
